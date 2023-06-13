@@ -1,0 +1,514 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    overflow: hidden;
+    transition: 10s;
+    background-color: rgb(31, 68, 0);
+}
+
+p {
+    margin-top: 10px;
+}
+
+.wrapper {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr) 1.5fr;
+    grid-auto-rows: minmax(50px, 12vh);
+    grid-template-areas: 
+    "db db db . . . . . sb"
+    "db db db . . . . . sb"
+    "dl dl dl img img img img st sb"
+    "dl dl dl img img img img st sb"
+    "dl dl dl img img img img st sb"
+    "op op op img img img img st sb"
+    "op op op img img img img st sb"
+    "op op op img img img img st sb";
+    padding-left: 10px;
+}
+
+.dabloon-counter {
+    grid-area: db;
+}
+
+.dabloon-image {
+    float: left;
+}
+
+.dabloon-amount {
+    font-size: 60px;
+    font-weight: bold;
+    float: left;
+    transition: 10s;
+}
+
+.dialog-box {
+    grid-area: dl;
+    max-height: 100%;
+    overflow-y: auto;
+    background-color: #5f943c;
+    padding: 5px;
+    padding-right: 0px;
+    font-size: 20px;
+    border-bottom: 3px solid black;
+    transition: 10s;
+}
+
+.option-box {
+    grid-area: op;
+    max-height: 100vh;
+    overflow-y: auto;
+    background-color: #A9D18E;
+    border-top: 3px solid black;
+    transition: 10s;
+}
+
+.option-box-option,
+.remove-items-option {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    margin-top: 50px;
+    height: 40px;
+    width: 75%;
+    background-color: #548235;
+    color: white;
+    border: 3pt solid #385723;
+    font-size: 2.75vmin;
+}
+
+.remove-items-option {
+    background-color: #e23030;
+    border: 3pt solid #ffa600;
+}
+
+.image-display {
+    grid-area: img;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+    grid-template-areas: 
+    ". . . . . . . . . ."
+    ". . . . . . . . . ."
+    ". . . . . . . . . ."
+    ". . . . . . . . . ."
+    ". . . . . . . . . ."
+    ". . . . . . . . . ."
+    ". . . . . . . . . ."
+    ". . . . . . . . . ."
+    ". . . . . . . . . ."
+    ". . . . . . . . . .";
+    background-color: green;
+    border: 5px solid black;
+    z-index: 0;
+}
+
+.game-image {
+    grid-column: 0 / 10; 
+    z-index: 0; 
+    width: 1000%;
+    max-height: 84.5%;
+}
+
+.game-stats {
+    grid-area: st;
+    background-color: #385723;
+}
+
+.luck {
+    color: #70AD47;
+    font-size: 25px;
+}
+
+.health {
+    color: #FF0000;
+    font-size: 25px;
+}
+
+.regeneration {
+    color: lime;
+    font-size: 25px;
+}
+
+.poison {
+    color: rgb(199, 0, 199);
+    font-size: 25px;
+}
+
+.distance {
+    color: white;
+    font-size: 25px;
+}
+
+/* ------------------ EXTRAS MENU CSS ------------------ */
+
+.extras-button {
+    z-index: 3;
+    grid-column: sb-start;
+    grid-row: sb-start;
+    position: relative;
+}
+
+.extras-button img {
+    width: 30%;
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+}
+
+.go-left {
+    left: 0;
+}
+
+.extras-menu {
+    grid-area: sb;
+    display: grid;
+    gap: 10px;
+    grid-template-rows: repeat(7, 1fr);
+    grid-template-areas: 
+    ". . ."
+    "q q q"
+    "inv inv inv"
+    ". . ."
+    "is is is"
+    "ng ng ng"
+    "mb mb mb";
+    background-color: #A6A6A6;
+    opacity: 0;
+    height: 100vh;
+    z-index: 2;
+}
+
+.menu-button {
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 70%;
+    height: 70%;
+    font-size: 2.75vmin;
+    border: 2px solid black;
+    cursor: pointer;
+    color: black;
+    text-decoration: none;
+}
+
+.quests-button {
+    grid-area: q;
+    background-color: wheat;
+}
+
+.inventory-button {
+    grid-area: inv;
+    background-color: brown;
+}
+
+.settings-button {
+    grid-area: is;
+    background-color: lightgoldenrodyellow;
+}
+
+.settings-button img {
+    width: 25%;
+}
+
+.reset-game-button {
+    grid-area: ng;
+    background-color: red;
+}
+
+.back-to-menu-button {
+    grid-area: mb;
+    background-color: white;
+}
+
+.menu-overlay {
+    display: none;
+    grid-column: db-start / sb-end;
+    grid-row: sb-start / 12;
+    z-index: 1;
+    gap: 20px;
+    background-color: rgba(0, 0, 0, 0.3);
+    grid-template-columns: repeat(11, 1fr);
+    grid-template-rows: minmax(20px, 50px);
+    grid-template-areas: 
+    "inv inv inv inv . . . . . ."
+    "inv inv inv inv . . q q q ."
+    "inv inv inv inv . . q q q ."
+    "inv inv inv inv . . q q q ."
+    ". . . . . . s s s ."
+    ". . . . . . s s s ."
+    ". . . . . . s s s .";
+    max-height: 100vh;
+    overflow: auto;
+}
+
+.inventory-tab {
+    grid-area: inv;
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    grid-template-areas: 
+    "hd hd hd hd"
+    "b1 b2 b3 b4"
+    "b5 b6 b7 b8"
+    "b9 b10 b11 b12";
+    padding: 20px;
+    padding-top: 30px;
+    text-align: center;
+    background-color: #996633;
+    opacity: 0;
+    border-radius: 5px;
+    border: 2px solid black;
+}
+
+.inventory-tab > span {
+    grid-area: hd;
+    height: 45%;
+    text-align: center;
+    background-color: #CC9900;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.block1 {
+    grid-area: b1;
+}
+
+.block2 {
+    grid-area: b2;
+}
+
+.block3 {
+    grid-area: b3;
+}
+
+.block4 {
+    grid-area: b4;
+}
+
+.block5 {
+    grid-area: b5;
+}
+
+.block6 {
+    grid-area: b6;
+}
+
+.block7 {
+    grid-area: b7;
+}
+
+.block8 {
+    grid-area: b8;
+}
+
+.block9 {
+    grid-area: b9;
+}
+
+.block10 {
+    grid-area: b10;
+}
+
+.block11 {
+    grid-area: b11;
+}
+
+.block12 {
+    grid-area: b12;
+}
+
+.block-light, .block-normal, .block-darker, .block-darkest {
+    height: 80%;
+    width: 80%;
+    border: 3px solid black;
+    border-radius: 3px;
+}
+
+.block-light {
+    background-color: #CEBB84;
+}
+
+.block-normal {
+    background-color: #C0A760;
+}
+
+.block-darker {
+    background-color: #A58B41;
+}
+
+.block-darkest {
+    background-color: #836F35;
+}
+
+/* ------------ END OF INVENTORY ------------ */
+ 
+.quests-tab {
+    grid-area: q;
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    grid-template-areas: 
+    "hd hd hd hd"
+    ". tt0 tt0 ."
+    "ct0 ct0 ct0 ct0"
+    ". tt1 tt1 ."
+    "ct1 ct1 ct1 ct1";
+    padding: 20px;
+    padding-top: 30px;
+    text-align: center;
+    background-color: #996633;
+    opacity: 0;
+    border-radius: 5px;
+    border: 2px solid black;
+}
+
+.quests-tab > span {
+    grid-area: hd;
+    height: 45%;
+    text-align: center;
+    background-color: #548235;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.quest-blocks {
+    background-color: #CEBB84;
+    border: 3px solid black;
+    border-radius: 3px;
+}
+
+.quests-block0 {
+    grid-area: tt0;
+    font-size: 30px;
+    height: 50%;
+}
+
+.quests-block1 {
+    grid-area: ct0;
+    font-size: 20px;
+}
+
+.quests-block2 {
+    grid-area: tt1;
+    font-size: 30px;
+    height: 50%;
+}
+
+.quests-block3 {
+    grid-area: ct1;
+    font-size: 20px;
+}
+
+.settings-tab {
+    grid-area: s;
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    grid-template-areas: 
+    "hd hd hd hd"
+    "btn1 . st st"
+    "btn2 . rng rng";
+    padding: 20px;
+    padding-top: 30px;
+    text-align: center;
+    background-color: #7F7F7F;
+    opacity: 0;
+    border-radius: 5px;
+    border: 2px solid black;
+}
+
+.settings-tab > span {
+    grid-area: hd;
+    height: 70%;
+    text-align: center;
+    background-color: #D9D9D9;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.settings-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #D9D9D9;
+    border-radius: 5px;
+    border: 2px solid black;
+    font-size: 20px;
+}
+
+.display-stats {
+    grid-area: btn1;
+}
+
+.settings-stats {
+    grid-area: st;
+}
+
+.display-RNG {
+    grid-area: btn2;
+}
+
+.settings-RNG {
+    grid-area: rng;
+}
+
+@media screen and (max-width:875px) {
+    body {
+        overflow-y: auto;
+    }
+
+    .wrapper {
+        grid-template-columns: repeat(3, 1fr) 1.5fr;
+        grid-auto-rows: minmax(50px, 23.5vh);
+        grid-template-areas: 
+        "db db db sb"
+        "dl dl dl sb"
+        "dl dl dl sb"
+        "op op op sb"
+        "op op op sb"
+        "img img img sb"
+        "img img img sb"
+        "img img img sb"
+        "st st st sb"
+        "st st st sb";
+    }
+
+    .menu-overlay {
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: minmax(20px, 50px);
+        grid-template-areas: 
+        "inv inv inv inv"
+        "inv inv inv inv"
+        "inv inv inv inv"
+        "inv inv inv inv"
+        "q q q ."
+        "q q q ."
+        "q q q ."
+        "s s s ."
+        "s s s ."
+        "s s s .";
+    }
+
+    .inventory-tab {
+        padding: 0;
+        width: 65%;
+    }
+
+    .quests-tab {
+        padding: 0;
+        width: 65%;
+    }
+
+    .settings-tab {
+        padding: 0;
+        width: 65%;
+    }
+}

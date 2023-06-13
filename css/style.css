@@ -1,0 +1,39 @@
+body {
+    background-color: #DDF8E8;
+}
+
+.overlay {
+    position: absolute;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    width: 105%;
+    height: 100vh;
+    z-index: -1;
+    background-color: black;
+    opacity: 0;
+    transition: 2.5s;
+}
+
+.display-grid {
+    display: grid;
+}
+
+.add-opacity {
+    opacity: 1;
+}
+
+.option-box-overlay {
+    grid-area: op;
+    height: 350px;
+    max-height: 350px;
+    overflow-y: auto;
+    background-color: #919b59;
+    border-top: 3px solid black;
+    z-index: 1;
+}
+
+.remove-opacity {
+    opacity: 0;
+    z-index: -10;
+}

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TPOTD | The journey</title>
+    <link rel="stylesheet" href="/css/game.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="website icon" href="/img/Dabloon.jpg">
+</head>
+<body>
+    <div class="overlay"></div>
+    <div class="wrapper">
+        <div class="dabloon-counter">
+            <img class="dabloon-image" src="/img/Dabloon.jpg" alt="dabloon image">
+            <span class="dabloon-amount">[Number]</span>
+        </div>
+        <div class="dialog-box">
+        </div>
+        <div class="option-box">
+        </div>
+        <div class="option-box-overlay remove-opacity">
+        </div>
+        <div class="image-display">
+            <img class="game-image" src="/img/forest-path.jpg" alt="forest">
+        </div>
+        <div class="game-stats">
+            <p class="luck">
+                Luck: <span class="luck-counter">[Number]</span>
+            </p>
+            <p class="health">
+                Health: <span class="health-counter">[Number]</span>
+            </p>
+            <p class="regeneration">
+                Regeneration: <span class="regen-counter">[Number]</span>
+            </p>
+            <p class="poison">
+                Poison: <span class="poison-counter">[Number]</span>
+            </p>
+            <p class="distance">
+                Distance: <span class="distance-counter">[Number]</span>
+            </p>
+        </div>
+        <div class="extras-button">
+            <img src="/icons/9-dots.png" alt="Open sidebar">
+        </div>
+        <div class="extras-menu">
+            <div class="quests-button menu-button">
+                Quests
+            </div>
+            <div class="inventory-button menu-button">
+                Inventory
+            </div>
+            <div class="settings-button menu-button">
+                <img src="/icons/settings-icon.png" alt="cogwheel">Settings
+            </div>
+            <a class="reset-game-button menu-button" href="/game.html">
+                New game
+            </a>
+            <a class="back-to-menu-button menu-button" href="/index.html">
+                Back to menu
+            </a>
+        </div>
+        <div class="menu-overlay">
+            <div class="inventory-tab">
+                <span>Inventory</span><br>
+                <div class="block1 block-light">block1</div>
+                <div class="block2 block-light">block2</div>
+                <div class="block3 block-normal">block3</div>
+                <div class="block4 block-normal">block4</div>
+                <div class="block5 block-darker">block5</div>
+                <div class="block6 block-darker">block6</div>
+                <div class="block7 block-darker">block7</div>
+                <div class="block8 block-darker">block8</div>
+                <div class="block9 block-darkest">block9</div>
+                <div class="block10 block-darkest">block10</div>
+                <div class="block11 block-darkest">block11</div>
+                <div class="block12 block-darkest">block12</div>
+            </div>
+            <div class="quests-tab">
+                <span>Quests</span><br>
+                <div class="quests-block0 quest-blocks">title1</div>
+                <div class="quests-block1 quest-blocks">content1</div>
+                <div class="quests-block2 quest-blocks">title2</div>
+                <div class="quests-block3 quest-blocks">content2</div>
+            </div>
+            <div class="settings-tab">
+                <span>In-game Settings</span><br>
+                <input type="checkbox" class="display-stats" checked><div class="settings-stats settings-info">Display stats</div>
+                <input type="checkbox" class="display-RNG"><div class="settings-RNG settings-info">Only show options when necessary</div>
+            </div>
+        </div>
+    </div>
+    <script type="application/javascript" src="/js/game.js"></script>
+    <script type="application/javascript" src="/js/events.js"></script>
+</body>
+</html>
