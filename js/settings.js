@@ -13,10 +13,10 @@ function saveSettings() {
         localStorage.setItem(`luck`, false);
     }
 
-    if (skipOption.checked == true) {
-        localStorage.setItem(`skipping`, true);
-    } else {
+    if (skipOption.checked == false) {
         localStorage.setItem(`skipping`, false);
+    } else {
+        localStorage.setItem(`skipping`, true);
     }
 }
 
