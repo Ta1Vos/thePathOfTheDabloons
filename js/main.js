@@ -11,7 +11,7 @@ function startGame() {
     overlayDiv.style.opacity = `1`;
     body.style.backgroundColor = `black`;
     setTimeout(() => {
-        window.location = `/game.html`;
+        window.location = `game.html`;
     }, 2500);
     sessionStorage.setItem(`transitionFromGame`, true);
 }
